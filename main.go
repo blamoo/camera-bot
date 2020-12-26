@@ -39,17 +39,20 @@ func main() {
 	}
 
 	for _, camera := range appConfig.Cameras {
-		b.Handle(fmt.Sprintf("/%s", camera.Command), func(m *telebot.Message) {
-			_, userFound := appConfig.Users[m.Sender.ID]
+		f := func(lCamera Camera) {
+			b.Handle(fmt.Sprintf("/%s", camera.Command), func(m *telebot.Message) {
+				_, userFound := appConfig.Users[m.Sender.ID]
 
-			if !userFound {
-				log.Printf("Unknown user: %d (%s %s)\n", m.Sender.ID, m.Sender.FirstName, m.Sender.LastName)
-				return
-			}
+				if !userFound {
+					log.Printf("Unknown user: %d (%s %s)\n", m.Sender.ID, m.Sender.FirstName, m.Sender.LastName)
+					return
+				}
 
-			lCamera := camera
-			lCamera.SendPhotoTo(b, m.Sender)
-		})
+				lCamera.SendPhotoTo(b, m.Sender)
+			})
+		}
+
+		f(camera)
 	}
 
 	b.Handle("/tudo", func(m *telebot.Message) {
