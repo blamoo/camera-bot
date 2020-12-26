@@ -1,0 +1,18 @@
+[Unit]
+Description=camera-bot
+
+[Service]
+User=pi
+Group=pi
+Type=simple
+Restart=always
+RestartSec=5s
+
+# Replace this with the path to the camera-bot binary
+ExecStart=/home/pi/camera-bot/camera-bot 
+
+# Replace this with the path to the folder with your /config/config.json file (usually the same folter of the camera-bot binary)
+WorkingDirectory=/home/pi/camera-bot
+
+[Install]
+WantedBy=multi-user.target
