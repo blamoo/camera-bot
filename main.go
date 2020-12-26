@@ -102,7 +102,7 @@ func main() {
 			return
 		}
 
-		file, err := ioutil.ReadFile(fi.Name())
+		file, err := ioutil.ReadFile("/sys/class/thermal/thermal_zone0/temp")
 
 		if err != nil {
 			log.Println(err)
@@ -111,7 +111,7 @@ func main() {
 		}
 
 		// Convert []byte to string and print to screen
-		temp, err := strconv.Atoi(string(file))
+		temp, err := strconv.Atoi(strings.TrimSpace(string(file)))
 
 		if err != nil {
 			log.Println(err)
@@ -119,7 +119,7 @@ func main() {
 			return
 		}
 
-		b.Send(m.Sender, fmt.Sprintf("%f°C", float64(temp)/1000))
+		b.Send(m.Sender, fmt.Sprintf("%.2f°C", float64(temp)/1000))
 	})
 
 	b.Handle("/ip", func(m *telebot.Message) {
