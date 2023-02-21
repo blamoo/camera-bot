@@ -21,7 +21,7 @@ type Camera struct {
 type Config struct {
 	Debug          bool
 	TelegramApiKey string
-	Users          map[int]string
+	Users          map[int64]string
 	Cameras        []Camera
 }
 
