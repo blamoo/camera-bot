@@ -160,12 +160,12 @@ func main() {
 
 		sb.WriteString(fmt.Sprintf("%s\n", ipData.Origin))
 		sb.WriteString("-----------------------------\n")
-		sb.WriteString("http://blamoo.dynu.net:5952/zzz\n")
-		sb.WriteString("http://192.168.0.52/zzz\n")
-		sb.WriteString(fmt.Sprintf("http://%s:5952/zzz\n", ipData.Origin))
-		sb.WriteString("-----------------------------\n")
+		//sb.WriteString("http://blamoo.dynu.net:5952/zzz\n")
+		//sb.WriteString("http://192.168.0.56/zzz\n")
+		//sb.WriteString(fmt.Sprintf("http://%s:5952/zzz\n", ipData.Origin))
+		//sb.WriteString("-----------------------------\n")
 		sb.WriteString("https://blamoo.dynu.net:9798\n")
-		sb.WriteString("https://192.168.0.52:9798\n")
+		sb.WriteString("https://192.168.0.56:9798\n")
 		sb.WriteString(fmt.Sprintf("https://%s:9798\n", ipData.Origin))
 
 		b.Send(m.Sender, sb.String())
