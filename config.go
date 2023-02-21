@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"gopkg.in/tucnak/telebot.v2"
-	tb "gopkg.in/tucnak/telebot.v2"
 )
 
 var appConfig Config
@@ -35,8 +34,8 @@ func (this *Camera) SendPhotoTo(b *telebot.Bot, to *telebot.User) {
 
 	defer client.Body.Close()
 
-	photo := &tb.Photo{
-		File: tb.File{
+	photo := &telebot.Photo{
+		File: telebot.File{
 			FileReader: client.Body,
 		},
 	}
