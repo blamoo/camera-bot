@@ -1,6 +1,6 @@
 module github.com/blamoo/camera-bot
 
-go 1.20
+go 1.21
 
 require gopkg.in/tucnak/telebot.v2 v2.5.0
 
